@@ -48,16 +48,18 @@ export default function Nav() {
                         <h1 className="tracking-tigh">Create</h1>
                     </div>
 
-                    {/* <div className='flex justify-end gap-3 w-60'>
-                        <div className='flex flex-col text-right'>
-                            <h1 className='font-bold text-lg'>Yash Singh Bisht</h1>
-                            <p className='text-muted-text text-xs leading-2'>Yashbisht0007@gmail.com</p>
-                        </div>
-
-                        <div className='w-10 h-10 border border-border-20 rounded-full overflow-clip cursor-pointer' onClick={() => setProfileOpen((prev) => !prev)}>
+                    <div className='flex items-center justify-end gap-3 w-60 shrink-0'>
+                        <div className='w-9 h-9 border border-border-20 rounded-full overflow-clip cursor-pointer' onClick={() => setProfileOpen((prev) => !prev)}>
                             <img src="/W.jpg" className='w-full h-full' />
                         </div>
-                    </div> */}
+
+                        <div className='flex items-center gap-2 text-left'>
+                            <h1 className='font-bold text-lg tracking-wides'>thunderbeast37</h1>
+                            <i className='ph ph-caret-down'></i>
+                            {/* <p className='text-muted-text text-xs leading-2'>Yashbisht0007@gmail.com</p> */}
+                        </div>
+
+                    </div>
 
                     {profileOpen && (
                         <>

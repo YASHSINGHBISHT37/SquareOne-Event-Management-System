@@ -80,7 +80,12 @@ export const data = {
     {
       head: 'Rewards and Prizes',
       code: 'Prizes',
-      sub: ''
+      sub: [
+        { "title": "First Runner Up", "prize": "$5,000", "description": "Top 3 teams will be awarded prizes as per the ranking." },
+        { "title": "Second Runner Up", "prize": "$2,500", "description": "Top 3 teams will be awarded prizes as per the ranking." },
+        { "title": "Third Runner Up", "prize": "$1,000", "description": "Top 3 teams will be awarded prizes as per the ranking." },
+        { "title": "Participation", "prize": "Certificate","description":"All Participants" },
+      ]
     },
     {
       head: 'Eligibility',
@@ -136,4 +141,13 @@ export const data = {
       ]
     }
   ],
+}
+
+
+export const profile = {
+  profileImg: 'W.jpg',
+  name: 'Yash Singh Bisht',
+  username: 'THUNDERBEAST37',
+  institute: 'Dr.D.Y.Patil Institute of Technology',
+  bio: '',
 }

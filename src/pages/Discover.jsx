@@ -49,6 +49,30 @@ const events = [
     theme: '#B45309',
     tags: ['Figma', 'Product Design'],
   },
+  {
+    id: 5,
+    title: 'CodeSprint Coding Championship',
+    org: 'IIT Delhi Tech Fest',
+    type: 'Competition',
+    mode: 'Hybrid',
+    team: 'Individual',
+    prize: '₹1,00,000',
+    deadline: '30 Oct 26',
+    theme: '#047857',
+    tags: ['DSA', 'Competitive Programming'],
+  },
+  {
+    id: 6,
+    title: 'UI/UX Design Showdown',
+    org: 'Design Club, GGSIPU',
+    type: 'Competition',
+    mode: 'Online',
+    team: '1-2 Memebers',
+    prize: '₹25,000',
+    deadline: '15 Nov 26',
+    theme: '#B45309',
+    tags: ['Figma', 'Product Design'],
+  },
 ]
 
 const modes = ['All', 'Online', 'Offline', 'Hybrid']
@@ -89,6 +113,7 @@ export default function Discover() {
   const [type, setType] = useState('All')
   const [team, setTeam] = useState('All')
   const [search, setSearch] = useState('')
+  const [slide, setSlide] = useState('Grid')
 
   const filtered = events.filter((e) => {
     const isSolo = e.team === 'Individual'
@@ -104,7 +129,7 @@ export default function Discover() {
 
   return (
     <div className='w-full flex items-center justify-center'>
-      <div className='w-full max-w-7xl mt-20 flex flex-col gap-6 items-center min-h-screen'>
+      <div className='w-full max-w-7xl my-22 flex flex-col gap-6 items-cente min-h-screen'>
 
         {/* FILTERS */}
         {/* <div className='sticky top-24 border w-80 shrink-0 rounded-3xl bg-muted-bg border-border-10 p-4 flex flex-col gap-5'>
@@ -124,16 +149,42 @@ export default function Discover() {
           </button>
         </div> */}
 
-        <div className=' border border-border-10 rounded-full p-1 w-5xl bg-muted-bg'>
-          <input type="text" />
+        <div className='flex justify-end items-center gap-3'>
+          <div className=' border border-border-10 rounded-2xl p-2 px-3 gap-2 bg-muted-bg flex items-center'>
+            <i className="ph ph-magnifying-glass text-muted-text"></i>
+            <input type="text" className='text-sm outline-0' placeholder='Search Hackathon...' />
+          </div>
+
+          <div className='flex relative borde border-border-10 bg-muted-b rounded-2xl px-1 p-1 text-xl border bg-muted-bg' >
+            <div className={`absolute top-1 bottom-1 w-[calc(50%-6px)] rounded-xl bg-accent border border-border-10 transition-all duration-300 ease-in-out ${slide === 'Grid' ? 'left-1' : 'left-[calc(50%+2px)]'}`} />
+            <div onClick={() => setSlide('Grid')} className={`flex items-center gap-1 cursor-pointer border p-1 rounded-xl px-1.5 border-border-10/0 relative text-muted-text ${slide === 'Grid' ? 'text-white' : ''}`}>
+              <i className="ph ph-squares-four"></i>
+            </div>
+
+            <div onClick={() => setSlide('List')} className={`flex items-center gap-1 cursor-pointer border p-1 rounded-xl px-1.5 border-border-10/0 relative text-muted-text ${slide === 'List' ? 'text-white' : ''}`}>
+              <i className="ph ph-list-dashes"></i>
+            </div>
+          </div>
         </div>
 
-        {/* <div></div> */}
+        <div>
+          <div className='mb-4'>
+            <h1 className='font-bold text-3xl tracking-tight'>Explore Hackathons (843)</h1>
+            <p className='text-sm text-muted-text'>Every hackathon we have run, from the first one in 2021 to whatever is next. Build something in a weekend with the community, for prizes and interviews.</p>
+          </div>
+
+          <div className='flex'>
+            <div className='flex items-center gap-1 border border-border-10 rounded-full bg-muted-bg p-0.5 px-2.5'>
+              <i className="ph ph-arrows-down-up text-muted-text"></i>
+              <p className='text-sm'>Sort</p>
+            </div>
+          </div>
+        </div>
 
         {/* EVENTS */}
-        <div className='grid grid-cols-2 gap-6'>
+        <div className='grid grid-cols-3 gap-4'>
           {events.map((item, i) => (
-            <div key={i} className='border border-border-10 bg-muted-bg rounded-2xl overflow-clip'>
+            <div key={i} className='border border-border-10 bg-muted-bg rounded-2xl overflow-clip cursor-pointer hover:scale-102 transition-all ease-in-out'>
 
               {/* IMAGE */}
               <div className='relative w-full h-40'>
@@ -143,7 +194,7 @@ export default function Discover() {
                 <img src="1.avif" className='w-24 aspect-square rounded-2xl border-6 border-[#EFF0F1] object-cover absolute right-2 -bottom-10' />
               </div>
 
-              <div className='p-4 py-3 pb-2 flex flex-col gap-3'>
+              <div className='p-4 py-3 flex flex-col gap-3'>
                 {/* TITLE */}
                 <div>
                   <h1 className='text-xl font-bold tracking-tight w-xs leading-6 mb-0.5'>{item.title}</h1>
@@ -164,25 +215,43 @@ export default function Discover() {
                     <p className='flex items-center gap-1.5'><i className='ph ph-map-pin text-md border rounded-md p-1 text-text bg-bg border-border-10'></i>{item.org}</p>
                   </div>
 
-                  <div className='flex items-center pt-2 justify-between'>
-                    <div>
-                      <span className='text-accent'>Posted Oct 12,2026</span>
-                    </div>
-
-                    <div className='flex items-center gap-3 justify-end'>
-                      <div className=''>
-                        <h1>8 days left</h1>
+                  {/* <div className='flex items-center pt-2 justify-between border-t border-border-10 bg-muted-bg'>
+                      <div>
+                        <span className='text-accent'>Posted Oct 12,2026</span>
                       </div>
 
-                      <div className='border rounded-full p-1 px-3 text-xs bg-accent text-bg'>
-                        <h1>Register</h1>
-                      </div>
-                    </div>
+                      <div className='flex items-center gap-3 justify-end'>
+                        <div className=''>
+                          <h1>8 days left</h1>
+                        </div>
 
-                  </div>
+                        <div className='border rounded-full p-1 px-3 text-xs bg-accent text-bg'>
+                          <h1>Register</h1>
+                        </div>
+                      </div>
+
+                    </div> */}
                 </div>
 
+
               </div>
+
+              <div className='flex items-center pt-2 justify-between border-t border-border-10 bg-muted-bg text-xs w-full px-4 pr-2 pb-1'>
+                <div>
+                  <span className='text-accent'>Posted Oct 12,2026</span>
+                </div>
+
+                <div className='flex items-center gap-3 justify-end'>
+                  <div className=''>
+                    <h1>8 days left</h1>
+                  </div>
+
+                  <div className='border rounded-full p-1 px-3 text-xs bg-accent text-bg'>
+                    <h1>Register</h1>
+                  </div>
+                </div>
+              </div>
+
             </div>
           ))}
         </div>

@@ -652,98 +652,77 @@ const bar = [
     },
 ]
 
-const icons = {
-    'Basic Details': 'ph-pencil-simple',
-    'Rounds': 'ph-path',
-    'Prize & Rewards': 'ph-trophy',
-    'Eligiblity': 'ph-',
-    'Dates & Deadlines': 'ph-',
-    'Banner': 'ph-',
-    'Additional Info': 'ph-',
-    'FAQs': 'ph-',
-}
-
 export default function Create() {
     const [active, setActive] = useState('Basic')
     const current = bar.find((b) => b.code === active)
 
     return (
-        <div className="w-full flex flex-col items-center min-h-screen">
+        <div className="w-full flex flex-col items-center justify-center fixed inset-0 z-9999999 bg-text/60 backdrop-blur-md">
+            <div className="w-7xl flex flex-col items-center h-200 bg-bg z-9999 overflow-clip rounded-3xl relative overflow-y-scroll scrollbar-hide">
 
-            {/* SECTIONS BAR */}
-            {/* <div className='border-b w-full border-border-10 flex items-center justify-center p-2 fixed top-16 z-99 left-1/2 -translate-x-1/2 backdrop-blur-xl h-12'>
-                {bar.map((item) => {
-                    const isActive = active === item.code
-                    return (
-                        <div key={item.code} onClick={() => { setActive(item.code); window.scrollTo({ top: 0 }) }}
-                            className='relative group cursor-pointer hover:bg-muted-bg transition-all ease-in-out duration-200 p-2 px-3 rounded-xl'>
-                            <h1 className={`relative cursor-pointer tracking-wide transition-colors text-sm ${isActive ? 'text-accent' : 'text-muted-text'}`}>{item.code}</h1>
-                            <div className={`w-full bg-accent h-0.5 rounded-full absolute left-0 -bottom-1.5 origin-center transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}></div>
-                        </div>
-                    )
-                })}
-                <div className=' p- flex items-center gap-2 ml-10'>
-                    <h1 className='font-dot font-bold'>20%</h1>
-                    <button className='bg-accent text-bg p-1 px-2 text-sm rounded-lg'>Live It</button>
-                </div>
-            </div> */}
-
-            <div className="w-full max-w-6xl mt-24 flex gap-10">
-                <div className='flex flex-col gap-6 sticky top-26 w-70 h-auto'>
-
-                    <div className='flex flex-col items-center'>
-                        <h1 className="text-8xl font-dot tracking-tight font-bold bg-linear-to-tr from-text via-accent to-text bg-clip-text text-transparent">21%</h1>
+                {/* SECTIONS BAR */}
+                <div className='border-b w-7xl rounded-t-3xl border-border-10 flex items-center bg-muted-bg justify-center p-4 z-99 left- -translate- fixed backdrop-blur-xl h-14'>
+                    {bar.map((item) => {
+                        const isActive = active === item.code
+                        return (
+                            <div key={item.code} onClick={() => { setActive(item.code); window.scrollTo({ top: 0 }) }}
+                                className='relative group cursor-pointer hover:bg-muted-bg transition-all ease-in-out duration-200 p-2 px-3 rounded-xl'>
+                                <h1 className={`relative cursor-pointer tracking-wide transition-colors text-sm ${isActive ? 'text-accent' : 'text-muted-text'}`}>{item.code}</h1>
+                                <div className={`w-full bg-accent h-0.5 rounded-full absolute left-0 -bottom-2.5 origin-center transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}></div>
+                            </div>
+                        )
+                    })}
+                    <div className=' p- flex items-center gap-2 ml-10'>
+                        <h1 className='font-dot font-bold'>20%</h1>
+                        <button className='bg-accent text-bg p-1 px-2 text-sm rounded-lg'>Live It</button>
                     </div>
-
-                    {/* <div className='border border-border-10 rounded-2xl bg-muted-bg flex flex-col p-2 flex-1 backdrop-blur-xl'>
-                        {bar.map((item) => {
-                            const isActive = active === item.code
-                            return (
-                                <div key={item.code} onClick={() => { setActive(item.code); window.scrollTo({ top: 0 }) }}
-                                    className='relative flex items-center gap-2 group cursor-pointer hover:bg-muted-bg transition-all ease-in-out duration-200 p-2 px-3 rounded-xl'>
-                                    <i className={`ph ${icons[item.head] || 'ph-circle'} ${isActive ? 'text-accent' : 'text-muted-text'}`}></i>
-                                    <h1 className={`relative cursor-pointer tracking-wide transition-colors text-sm ${isActive ? 'text-accent' : 'text-muted-text'}`}>{item.code}</h1>
-                                </div>
-                            )
-                        })}
-                    </div> */}
-
-                    <div className=' flex flex-col gap-2 px-8'>
-                        {bar.map((item, i) => {
-                            const isActive = active === item.code
-                            return (
-                                <div key={item.code} onClick={() => { setActive(item.code); window.scrollTo({ top: 0 }) }}className='relative flex items-center gap-2 group cursor-pointer'>
-                                    <div className='w-9 h-9 bg-accent/20 p-0.5 rounded-full flex items-center justify-center relative'>
-                                        <div className='text-bg rounded-full bg-accent w-full h-full flex z-1 items-center justify-center font-dot font-bold text-4xl'>{i + 1}</div>
-                                        <div className={` border-dashed border-accent/50 h-10 rounded-full absolute left-1/2 top-1/2 ${i === bar.length - 1 ? '' : 'border'}`}></div>
-                                    </div>
-                                    <h1 className={`relative cursor-pointer tracking-wide transition-colors text-sm leading-4 ${isActive ? 'text-accent' : 'text-muted-text'}`}>{item.code}</h1>
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <p className='border w-full p-1 rounded-xl border-border-10 flex items-center justify-center bg-accent text-bg font-bold font-dot text-2xl'> Done</p>
-
                 </div>
 
-                <div className='relative w-5xl'>
-                    <div key={current.code} className='flex flex-col gap-4'>
-                        <div className='flex justify-between'>
-                            <div>
-                                <h1 className='font-bold text-2xl'>{current.head}</h1>
-                                <p className='text-sm text-muted-text'>{current.sub}</p>
+                <div className="w-full max-w-7xl w mt-10 flex gap-4 px-4">
+                    <div className='border w-sm mt-10'>
+                        <div className='flex flex-col gap-6 sticky top-26 w-70 h-auto'>
+
+                            <div className='flex flex-col items-center'>
+                                <h1 className="text-8xl font-dot tracking-tight font-bold bg-linear-to-tr from-text via-accent to-text bg-clip-text text-transparent">21%</h1>
                             </div>
 
-                            {current.head === 'Rounds' && (
-                                <div className='rounded-full flex items-center justify-center p-2 gap-2 px-3 cursor-pointer h-8 bg-accent text-bg'>
-                                    <i className='ph ph-plus text-bg'></i>
-                                    <p className='text-sm'>Add Rounds</p>
-                                </div>
-                            )}
-                        </div>
+                            <div className=' flex flex-col gap-2 px-8'>
+                                {bar.map((item, i) => {
+                                    const isActive = active === item.code
+                                    return (
+                                        <div key={item.code} onClick={() => { setActive(item.code); window.scrollTo({ top: 0 }) }} className='relative flex items-center gap-2 group cursor-pointer'>
+                                            <div className='w-9 h-9 bg-accent/20 p-0.5 rounded-full flex items-center justify-center relative'>
+                                                <div className='text-bg rounded-full bg-accent w-full h-full flex z-1 items-center justify-center font-dot font-bold text-4xl'>{i + 1}</div>
+                                                <div className={` border-dashed border-accent/50 h-10 rounded-full absolute left-1/2 top-1/2 ${i === bar.length - 1 ? '' : 'border'}`}></div>
+                                            </div>
+                                            <h1 className={`relative cursor-pointer tracking-wide transition-colors text-sm leading-4 ${isActive ? 'text-accent' : 'text-muted-text'}`}>{item.code}</h1>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <p className='border w-full p-1 rounded-xl border-border-10 flex items-center justify-center bg-accent text-bg font-bold font-dot text-2xl'> Done</p>
 
-                        <div className='px'>
-                            <Section item={current} />
+                        </div>
+                    </div>
+                    <div className='relative w-5xl'>
+                        <div key={current.code} className='flex flex-col gap-4 py-8'>
+                            <div className='flex justify-between'>
+                                <div>
+                                    <h1 className='font-bold text-2xl'>{current.head}</h1>
+                                    <p className='text-sm text-muted-text'>{current.sub}</p>
+                                </div>
+
+                                {current.head === 'Rounds' && (
+                                    <div className='rounded-full flex items-center justify-center p-2 gap-2 px-3 cursor-pointer h-8 bg-accent text-bg'>
+                                        <i className='ph ph-plus text-bg'></i>
+                                        <p className='text-sm'>Add Rounds</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className='px'>
+                                <Section item={current} />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import DetailPage from './pages/DetailPage'
 import Discover from './pages/Discover'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import Home from './pages/Home'
 
 export default function App() {
   return (
@@ -15,14 +16,12 @@ export default function App() {
       <Nav />
       {/* <Login/> */}
 
-      {/* <Blog/> */}
-
       <div className='bg-b h-full flex-1 flex flex-col items-center overflow-y-scroll scrollbar-hide relative'>
         <div className='w-full bg-[#F7F8F9]'>
           <Routes>
-            {/* <Route path='/' element={<FullPage />} /> */}
+            {/* <Route path='/' element={<Home />} /> */}
             <Route path='/' element={<DetailPage />} />
-            <Route path='/create' element={<Create />} />
+            {/* <Route path='/create' element={<Create />} /> */}
             <Route path='/discover' element={<Discover />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/blog' element={<Blog />} />

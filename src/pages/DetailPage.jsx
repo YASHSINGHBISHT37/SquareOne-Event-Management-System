@@ -3,6 +3,7 @@ import { useLayoutEffect } from 'react'
 import { data } from '../data/data'
 import { useRef } from 'react'
 import { Link, useLocation } from "react-router-dom"
+import Create from './Create'
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 
@@ -122,6 +123,36 @@ function Organiser() {
     )
 }
 
+function Prizes() {
+    return (
+        <div className='flex-col gap-2 gap-y-3 grid grid-cols-'>
+            {/* {data.main.find((m) => m.head === 'Rewards and Prizes')?.sub.map((item, i) => (
+                <div className='rounded-3xl border border-border-10 p-4 pb-1 bg-muted-bg flex flex-col gap-3'>
+                    <p className='text-5xl font-bold tracking-tight text-accent'>{item.prize}</p>
+                    <div className='flex-1'>
+                        <p className='font-bold text-lg'>{item.title}</p>
+                        {item.description && <p className='text-muted-text text-sm leading-4'>{item.description}</p>}
+                    </div>
+                </div>
+            ))} */}
+
+            {data.main.find((m) => m.head === 'Rewards and Prizes')?.sub.map((item, i) => (
+                <div className='rounded-3xl border border-border-10 p-4 bg-muted-bg flex items-center'>
+                    <img src="gold-medal.avif" className='w-16 mr-4'/>
+                    <div className='flex-1'>
+                        <p className='font-bold text-lg mb-1'>{item.title}</p>
+                        {item.description && <p className='text-muted-text text-sm leading-4 w-xs'>{item.description}</p>}
+                    </div>
+                    <div>
+                        <p className='text-4xl font-bold tracking-tight text-accent'>{item.prize}</p>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+    )
+}
+
 /* ---------------- Section content (by heading) ---------------- */
 function Section({ item }) {
     switch (item.head) {
@@ -152,6 +183,9 @@ function Section({ item }) {
                     ))}
                 </div>
             )
+
+        case 'Rewards and Prizes':
+            return <Prizes />
 
         case 'Contact the Organisers':
             return <Organiser />
@@ -186,6 +220,7 @@ export default function DetailPage() {
 
     return (
         <div className="w-full flex flex-col items-center ">
+            {/* <Create/> */}
 
             {/* SECTIONS BAR */}
             <div className='border-b w-full border-border-10 flex items-center justify-center p-2 fixed top-16 z-99 left-1/2 -translate-x-1/2 backdrop-blur-xl h-12'>
